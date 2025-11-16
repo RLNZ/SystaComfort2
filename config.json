@@ -1,0 +1,307 @@
+{
+  "modbus": {
+    "host": "192.168.178.198",
+    "port": 502
+  },
+  "mqtt": {
+    "host": "192.168.178.120",
+    "port": 1883,
+    "base_topic": "systacomfort2"
+  },
+  "devices": [
+    {
+      "name": "Heizkreis 1",
+      "presence_coil": 1,
+      "datapoints": [
+                {
+          "name": "Vorlauftemperatur Heizkreis 1",
+          "address": 1,
+          "type": "int16",
+          "register_type": "input",
+          "scaling": 0.1,
+          "unit": "°C"
+        },
+        {
+          "name": "Rücklauftemperatur Heizkreis 1",
+          "address": 2,
+          "type": "int16",
+          "register_type": "input",
+          "scaling": 0.1,
+          "unit": "°C"
+        },
+        {
+          "name": "Warmwassertemperatur oben",
+          "address": 3,
+          "type": "int16",
+          "register_type": "input",
+          "scaling": 0.1,
+          "unit": "°C"
+        },
+        {
+          "name": "Puffertemperatur oben",
+          "address": 4,
+          "type": "int16",
+          "register_type": "input",
+          "scaling": 0.1,
+          "unit": "°C"
+        },
+        {
+          "name": "Puffertemperatur unten",
+          "address": 5,
+          "type": "int16",
+          "register_type": "input",
+          "scaling": 0.1,
+          "unit": "°C"
+        },
+        {
+          "name": "Temperatur Zirkulationsrücklauf",
+          "address": 6,
+          "type": "int16",
+          "register_type": "input",
+          "scaling": 0.1,
+          "unit": "°C"
+        },
+        {
+          "name": "Sollwert Vorlauftemperatur Heizkreis 1",
+          "address": 2,
+          "type": "int16",
+          "register_type": "holding",
+          "scaling": 0.1,
+          "unit": "°C"
+        },
+        {
+          "name": "Sollwert Leistung Heizkreis 1",
+          "address": 5,
+          "type": "uint16",
+          "register_type": "holding",
+          "scaling": 1,
+          "unit": "%"
+        },
+        {
+          "name": "Sollwert Trinkwassertemperatur",
+          "address": 8,
+          "type": "int16",
+          "register_type": "holding",
+          "scaling": 0.1,
+          "unit": "°C"
+        },
+        {
+          "name": "maximale Vorlauftemperatur Heizkreis 1",
+          "address": 9,
+          "type": "int16",
+          "register_type": "holding",
+          "scaling": 0.1,
+          "unit": "°C"
+        },
+        {
+          "name": "Störcode Heizungsregler",
+          "address": 12,
+          "type": "uint16",
+          "register_type": "holding",
+          "scaling": 1,
+          "unit": ""
+        }
+      ]
+    },
+    {
+      "name": "Heizkreis 2",
+      "presence_coil": 2,
+      "datapoints": [
+        {
+          "name": "Sollwert Vorlauftemperatur Heizkreis 2",
+          "address": 3,
+          "type": "int16",
+          "register_type": "holding",
+          "scaling": 0.1,
+          "unit": "°C"
+        },
+        {
+          "name": "Sollwert Leistung Heizkreis 2",
+          "address": 6,
+          "type": "uint16",
+          "register_type": "holding",
+          "scaling": 1,
+          "unit": "%"
+        }
+      ]
+    },
+    {
+      "name": "Heizkreis 3",
+      "presence_coil": 2,
+      "datapoints": [
+        {
+          "name": "Sollwert Vorlauftemperatur Heizkreis 2",
+          "address": 4,
+          "type": "int16",
+          "register_type": "holding",
+          "scaling": 0.1,
+          "unit": "°C"
+        },
+        {
+          "name": "Sollwert Leistung Heizkreis 2",
+          "address": 7,
+          "type": "uint16",
+          "register_type": "holding",
+          "scaling": 1,
+          "unit": "%"
+        }
+      ]
+    },
+    {
+      "name": "SystaSolar Aqua II",
+      "datapoints": [
+        {
+          "name": "Kollektortemperatur",
+          "address": 11,
+          "type": "int16",
+          "register_type": "input",
+          "scaling": 0.1,
+          "unit": "°C"
+        },
+        {
+          "name": "Solare Eintrittstemperatur",
+          "address": 31,
+          "type": "int16",
+          "register_type": "input",
+          "scaling": 0.1,
+          "unit": "°C"
+        },
+        {
+          "name": "Temperatur Speicher oben",
+          "address": 32,
+          "type": "int16",
+          "register_type": "input",
+          "scaling": 0.1,
+          "unit": "°C"
+        },
+        {
+          "name": "Temperatur Solarverlauf",
+          "address": 33,
+          "type": "int16",
+          "register_type": "input",
+          "scaling": 0.1,
+          "unit": "°C"
+        },
+        {
+          "name": "Temperatur Speicher 2 oben",
+          "address": 34,
+          "type": "int16",
+          "register_type": "input",
+          "scaling": 0.1,
+          "unit": "°C"
+        },
+        {
+          "name": "Volumenstrom Solar",
+          "address": 35,
+          "type": "int16",
+          "register_type": "input",
+          "scaling": 0.1,
+          "unit": "l/min"
+        },
+        {
+          "name": "Außentemperatur am Kollektor 1",
+          "address": 36,
+          "type": "int16",
+          "register_type": "input",
+          "scaling": 0.1,
+          "unit": "°C"
+        },
+        {
+          "name": "Außentemperatur am Kollektor 2",
+          "address": 37,
+          "type": "int16",
+          "register_type": "input",
+          "scaling": 0.1,
+          "unit": "°C"
+        },
+        {
+          "name": "Kollektortemperatur 1",
+          "address": 38,
+          "type": "int16",
+          "register_type": "input",
+          "scaling": 0.1,
+          "unit": "°C"
+        },
+        {
+          "name": "Kollektortemperatur 2",
+          "address": 39,
+          "type": "int16",
+          "register_type": "input",
+          "scaling": 0.1,
+          "unit": "°C"
+        },
+        {
+          "name": "Störcode Solarregler",
+          "address": 13,
+          "type": "uint16",
+          "register_type": "holding",
+          "scaling": 1,
+          "unit": ""
+        },
+        {
+          "name": "Kollektorleistung",
+          "address": 19,
+          "type": "uint16",
+          "register_type": "holding",
+          "scaling": 0.1,
+          "unit": "kW"
+        },
+        {
+          "name": "Tagesenergie Solar",
+          "address": 20,
+          "type": "uint16",
+          "register_type": "holding",
+          "scaling": 0.1,
+          "unit": "kWh"
+        },
+        {
+          "name": "Gesamtenergie Solar",
+          "address": 21,
+          "type": "uint32",
+          "register_type": "holding",
+          "scaling": 0.1,
+          "unit": "kWh"
+        }
+      ]
+    }
+    ,
+    {
+      "name": "Kessel",
+      "datapoints": [
+        {
+          "name": "Vorlauftemperatur Kessel ",
+          "address": 12,
+          "type": "int16",
+          "register_type": "input",
+          "scaling": 0.1,
+          "unit": "°C"
+        },
+        {
+          "name": "Rücklauftemperatur Kessel",
+          "address": 13,
+          "type": "int16",
+          "register_type": "input",
+          "scaling": 0.1,
+          "unit": "°C"
+        },
+        {
+          "name": "Störung Wärmeerzeuger 1",
+          "address": 14,
+          "type": "uint16",
+          "register_type": "holding",
+          "scaling": 1,
+          "unit": ""
+        }
+        ,
+        {
+          "name": "Status Heizkessel",
+          "address": 41,
+          "type": "uint16",
+          "register_type": "holding",
+          "scaling": 1,
+          "unit": ""
+        }
+      ]
+    }
+  ]
+}
