@@ -252,7 +252,7 @@
           "type": "int16",
           "register_type": "input",
           "scaling": 0.1,
-          "unit": "l/min"
+          "unit": "L/min"
         },
         {
           "name": "Außentemperatur am Kollektor 1",
@@ -385,7 +385,8 @@
           "type": "uint32",
           "register_type": "holding",
           "scaling": 1,
-          "unit": ""
+          "unit": "",
+          "state_class": "total_increasing"
         }
       ]
     },
@@ -422,7 +423,7 @@
           "type": "int16",
           "register_type": "input",
           "scaling": 0.1,
-          "unit": "l/min"
+          "unit": "L/min"
         },
         {
           "name": "Volumenstrom Speicherseite",
@@ -430,7 +431,7 @@
           "type": "int16",
           "register_type": "input",
           "scaling": 0.1,
-          "unit": "l/min"
+          "unit": "L/min"
         },
         {
           "name": "Wärmemenge Warmwasser",

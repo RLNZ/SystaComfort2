@@ -50,13 +50,33 @@ def read_modbus_value(client, address, dtype, register_type="holding"):
     except (ModbusIOException, ConnectionException, ModbusException) as e:
         print(f"Modbus communication error: {e}")
 
+# Default Home Assistant classes derived from the unit.
+# Can be overridden per datapoint in config.json via "device_class" / "state_class"
+# (set to null to omit the field).
+UNIT_CLASSES = {
+    "°C":    ("temperature",      "measurement"),
+    "kWh":   ("energy",           "total_increasing"),
+    "kW":    ("power",            "measurement"),
+    "h":     ("duration",         "total_increasing"),
+    "L/min": ("volume_flow_rate", "measurement"),
+    "%":     (None,               "measurement"),
+}
+
+# Values the controller reports when a sensor/value is not available (TH-3000 doc)
+SENTINELS = {"int16": -32768, "uint16": 65535}
+
+def ha_classes(datapoint):
+    device_class, state_class = UNIT_CLASSES.get(datapoint.get("unit", ""), (None, None))
+    device_class = datapoint.get("device_class", device_class)
+    state_class = datapoint.get("state_class", state_class)
+    return device_class, state_class
+
 def publish_homeassistant_discovery(mqttc, base_topic, device_name, datapoint):
     sensor_id = f"{device_name}_{datapoint['name']}"
     topic = f"homeassistant/sensor/{slugify(sensor_id)}/config"
     payload = {
         "name": f"{device_name} {datapoint['name']}",
         "state_topic": f"{base_topic}/{slugify(device_name)}/{slugify(datapoint['name'])}/state",
-        "unit_of_measurement": datapoint["unit"],
         "unique_id": sensor_id,
         "device": {
             "identifiers": f"{slugify(device_name)}",
@@ -65,6 +85,13 @@ def publish_homeassistant_discovery(mqttc, base_topic, device_name, datapoint):
             "model": "SystaComfortII"
         }
     }
+    if datapoint.get("unit"):
+        payload["unit_of_measurement"] = datapoint["unit"]
+    device_class, state_class = ha_classes(datapoint)
+    if device_class:
+        payload["device_class"] = device_class
+    if state_class:
+        payload["state_class"] = state_class
     mqttc.publish(topic, json.dumps(payload), retain=True)
 
 def main():
@@ -89,8 +116,11 @@ def main():
                 raw_value = read_modbus_value(client, dp["address"], dp["type"], register_type=dp["register_type"])
                 if raw_value is None:
                     continue
-                scaled = round(raw_value * dp.get("scaling", 1), 1)
                 topic = f"{cfg['mqtt']['base_topic']}/{slugify(device['name'])}/{slugify(dp['name'])}/state"
+                if raw_value == SENTINELS.get(dp["type"]):
+                    mqttc.publish(topic, "None")  # HA shows "unknown" instead of -3276.8 / 65535
+                    continue
+                scaled = round(raw_value * dp.get("scaling", 1), 1)
                 mqttc.publish(topic, scaled)
         print(datetime.datetime.now())
         time.sleep(POLL_INTERVAL)
