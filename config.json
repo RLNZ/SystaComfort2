@@ -70,6 +70,14 @@
           "unit": "°C"
         },
         {
+          "name": "Raumtemperatur Heizkreis 1",
+          "address": 9,
+          "type": "int16",
+          "register_type": "input",
+          "scaling": 0.1,
+          "unit": "°C"
+        },
+        {
           "name": "Sollwert Vorlauftemperatur Heizkreis 1",
           "address": 2,
           "type": "int16",
@@ -378,6 +386,67 @@
           "register_type": "holding",
           "scaling": 1,
           "unit": ""
+        }
+      ]
+    },
+    {
+      "name": "SystaExpresso II",
+      "datapoints": [
+        {
+          "name": "Eintrittstemperatur Speicher",
+          "address": 40,
+          "type": "int16",
+          "register_type": "input",
+          "scaling": 0.1,
+          "unit": "°C"
+        },
+        {
+          "name": "Austrittstemperatur Warmwasser",
+          "address": 41,
+          "type": "int16",
+          "register_type": "input",
+          "scaling": 0.1,
+          "unit": "°C"
+        },
+        {
+          "name": "Eintrittstemperatur Kaltwasser",
+          "address": 42,
+          "type": "int16",
+          "register_type": "input",
+          "scaling": 0.1,
+          "unit": "°C"
+        },
+        {
+          "name": "Volumenstrom Kaltwasser",
+          "address": 43,
+          "type": "int16",
+          "register_type": "input",
+          "scaling": 0.1,
+          "unit": "l/min"
+        },
+        {
+          "name": "Volumenstrom Speicherseite",
+          "address": 44,
+          "type": "int16",
+          "register_type": "input",
+          "scaling": 0.1,
+          "unit": "l/min"
+        },
+        {
+          "name": "Wärmemenge Warmwasser",
+          "address": 23,
+          "type": "uint32",
+          "register_type": "holding",
+          "scaling": 0.1,
+          "unit": "kWh"
+        },
+        {
+          "name": "Wärmemenge Zirkulation",
+          "address": 25,
+          "type": "uint32",
+          "register_type": "holding",
+          "scaling": 0.1,
+          "unit": "kWh"
         }
       ]
     }
