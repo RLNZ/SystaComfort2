@@ -13,7 +13,15 @@
       "name": "Heizkreis 1",
       "presence_coil": 1,
       "datapoints": [
-                {
+        {
+          "name": "Außentemperatur",
+          "address": 0,
+          "type": "int16",
+          "register_type": "input",
+          "scaling": 0.1,
+          "unit": "°C"
+        },
+        {
           "name": "Vorlauftemperatur Heizkreis 1",
           "address": 1,
           "type": "int16",
@@ -100,6 +108,46 @@
           "register_type": "holding",
           "scaling": 1,
           "unit": ""
+        },
+        {
+          "name": "Solltemperatur Puffer oben",
+          "address": 44,
+          "type": "int16",
+          "register_type": "holding",
+          "scaling": 0.1,
+          "unit": "°C"
+        },
+        {
+          "name": "Status Heizkreis 1",
+          "address": 36,
+          "type": "uint16",
+          "register_type": "holding",
+          "scaling": 1,
+          "unit": ""
+        },
+        {
+          "name": "Betriebsart Heizkreis 1",
+          "address": 48,
+          "type": "uint16",
+          "register_type": "holding",
+          "scaling": 1,
+          "unit": ""
+        },
+        {
+          "name": "Status Warmwasser",
+          "address": 34,
+          "type": "uint16",
+          "register_type": "holding",
+          "scaling": 1,
+          "unit": ""
+        },
+        {
+          "name": "Status Zirkulation",
+          "address": 35,
+          "type": "uint16",
+          "register_type": "holding",
+          "scaling": 1,
+          "unit": ""
         }
       ]
     },
@@ -127,10 +175,10 @@
     },
     {
       "name": "Heizkreis 3",
-      "presence_coil": 2,
+      "presence_coil": 3,
       "datapoints": [
         {
-          "name": "Sollwert Vorlauftemperatur Heizkreis 2",
+          "name": "Sollwert Vorlauftemperatur Heizkreis 3",
           "address": 4,
           "type": "int16",
           "register_type": "holding",
@@ -138,7 +186,7 @@
           "unit": "°C"
         },
         {
-          "name": "Sollwert Leistung Heizkreis 2",
+          "name": "Sollwert Leistung Heizkreis 3",
           "address": 7,
           "type": "uint16",
           "register_type": "holding",
@@ -261,10 +309,17 @@
           "register_type": "holding",
           "scaling": 0.1,
           "unit": "kWh"
+        },
+        {
+          "name": "Status Solar",
+          "address": 39,
+          "type": "uint16",
+          "register_type": "holding",
+          "scaling": 1,
+          "unit": ""
         }
       ]
-    }
-    ,
+    },
     {
       "name": "Kessel",
       "datapoints": [
@@ -291,12 +346,35 @@
           "register_type": "holding",
           "scaling": 1,
           "unit": ""
-        }
-        ,
+        },
         {
           "name": "Status Heizkessel",
           "address": 41,
           "type": "uint16",
+          "register_type": "holding",
+          "scaling": 1,
+          "unit": ""
+        },
+        {
+          "name": "Kesselsolltemperatur",
+          "address": 45,
+          "type": "int16",
+          "register_type": "holding",
+          "scaling": 0.1,
+          "unit": "°C"
+        },
+        {
+          "name": "Betriebsstunden Kessel",
+          "address": 27,
+          "type": "uint32",
+          "register_type": "holding",
+          "scaling": 1,
+          "unit": "h"
+        },
+        {
+          "name": "Anzahl Starts Kessel",
+          "address": 29,
+          "type": "uint32",
           "register_type": "holding",
           "scaling": 1,
           "unit": ""
